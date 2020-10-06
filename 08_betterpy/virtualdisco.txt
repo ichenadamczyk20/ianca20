@@ -1,0 +1,13 @@
+Team Kent Cockroaches (Arib Chowdhury, Ian Chen-Adamczyk, William Yin)
+SoftDev
+K08 -- Cross Pollination and Virtual Insanity
+2020-10-02
+
+python3 -m venv ~/myherozero
+
+This command creates a virtual environment in a directory called myherozero in the home directory. It requires you to pip install virtualenv to run. This virtual environment allows you to create an isolated environment for Python where you can use different package dependencies and package versions from Python projects elsewhere on your system. (https://realpython.com/python-virtual-environments-a-primer/)
+According to the official Python glossary, a virtual environment is, "a cooperatively isolated runtime environment that allows Python users and applications to install and upgrade Python distribution packages without interfering with the behavior of other Python applications running on the same system." (https://docs.python.org/3/glossary.html#term-virtual-environment)
+According to the introduction to section 12 of the official Python tutorial, virtual environments can resolve the problem of "conflicting requirements." This is when a particular application needs one version of a module while another application on the same computer requires another version. Virtual environments alleviate this problem by creating, "a self-contained directory tree that contains a Python installation for a particular version of Python, plus a number of additional packages." This will allow a certain version of Python with some modules to interpret code in one place in the filesystem, and another version with some modules to interpret code in another place.
+(https://docs.python.org/3/tutorial/venv.html#introduction)
+I think this will be important for us because for different projects we may need different versions of modules, and the python package installer (pip) installs a certain version of a module to be used globally. Therefore, when we install a module, Python will use the version installed for all our projects anywhere on our computer. The Python Packaging User Guide recommends using virtual environments to get around this limitation.
+(https://packaging.python.org/guides/tool-recommendations/#installation-tool-recommendations)
