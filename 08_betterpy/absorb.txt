@@ -1,0 +1,5 @@
+Comments:
+I see groups importing the csv module to use functions like csv.reader or csv.DictReader to read the csv file. If not, they iterated through each line, using .strip() and .rsplit(‘,’, 1) to get the string and float values.
+Groups also often used random.choices to select a random occupation, while others might have approached this part by looping through float ranges and using random.uniform or random.randrange to select a range.
+Some groups addressed the extra rows at the beginning and end of the csv file, either by iterating through the keys and deleting the rows, or deleting specific entries from the dict after reading the dict.
+I learned about some Python features, like type hints, f quotes, or iterating through an open file to get each line. 
