@@ -1,0 +1,23 @@
+Team Kent Cockroaches (William Yin, Arib Chowdhury, Ian Chen-Adamczyk)
+SoftDev
+K09 -- Simple Path to Greatness
+2020-10-07
+
+
+Q0: Where have you seen similar syntax in other langs?
+A0: This looks similar to creating an instance of an object in Java by calling its constructor and passing in some arguments because the first letter of the name of the function is capitalized.
+
+Q1: What points of reference do you have for meaning of '/'?
+A1: In terms of folder directories, '/' means the root of the entire folder tree when taken as an absolute path.
+
+Q2: Where will this print to? What will it print?
+A2: We believe app.run() will run the hello_world function because it comes immediately after app.route("/"). If this is true, then we believe this will print to the command prompt where this Python file is run. We believe it will print __main__ because this is the main module being run.
+
+Q3: Will this appear anywhere? How u know?
+A3: We do not believe this will appear anywhere because the function is only returning it, not printing it.
+
+Q4: Where have you seen similar constructs in other languages?
+A4: It looks a lot like the main function in Java, and judging by the dot operator, run is an instance function of app. We believe app is a Flask object because of Q1.
+
+
+After running app.py, we saw that it started a development server and gave us a URL to access it. The URL is http://127.0.0.1:5000/ which leads us to think that it is a local IPv4 address because there are four numbers separated by dots each on the interval [0, 255] and we vaguely remember something being told in IntroCS about 127.0.0.1 being a local IP address. If this is an IP address, then the ':5000' likely specifies port 5000 and the '/' indicates the home directory of the website. When we copy and paste the URL to our browser, we are met with a blank page with the words "No hablo queso!" printed at the top. Additionally, we see __main__ is printed in the terminal, meaning that when we visited the '/' route in our website, it ran the hello_world function that comes immediately after @app.route("/"). This likely means that we can specify other routes for our website by writing @app.route(<route_string>) and then defining a function immediately after telling the website what it should display when the user visits that route.
