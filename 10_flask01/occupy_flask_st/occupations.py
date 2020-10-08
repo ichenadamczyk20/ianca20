@@ -20,7 +20,7 @@ def build_dict(file_name):
         values = line.split(',')
         # The occupation name is all the values except for the last one on
         # that line joined together into a string (handles names with commas).
-        occupation_name = ''.join(values[:-1])
+        occupation_name = ','.join(values[:-1])
         # Occupation percentage will always be the last value on that line.
         # Value will be a str so it must be converted to a float.
         occupation_percentage = float(values[-1])
