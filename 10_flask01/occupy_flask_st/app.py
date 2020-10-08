@@ -1,4 +1,7 @@
-# Roster
+# Team Kent Cockroaches (William Yin, Arib Chowdhury, Ian Chen-Adamczyk)
+# SoftDev
+# K10 -- Putting Little Pieces Together
+# 2020-10-09
 
 from flask import Flask
 import occupations
@@ -6,10 +9,10 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    roster = """Team Kent Cockroaches (William Yin, Arib Chowdhury, Ian Chen-adamczyk)
+    roster = """Team Kent Cockroaches (William Yin, Arib Chowdhury, Ian Chen-Adamczyk)
 <br>SoftDev
-<br>K09 -- Simple Path to Greatness
-<br>2020-10-07"""
+<br>K10 -- Putting Little Pieces Together
+<br>2020-10-09"""
     occupationDict = occupations.build_dict('occupations.csv')
     occupationSelect = occupations.select_occupation(occupationDict)
     return f"{roster}<br><br> \
