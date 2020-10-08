@@ -1,7 +1,7 @@
-# Team WAK -- William Yin, Anya Zorin, Kelly Huang
-# SoftDev
-# K07 -- StI/O: Divine your Destiny!
-# 2020-10-01
+#Team Kent Cockroaches (William Yin, Ian Chen-adamczyk, Arib Chowdhury)
+#SoftDev
+#K10 -- Putting Little Pieces Together
+#2020-10-08
 
 
 def build_dict(file_name):
