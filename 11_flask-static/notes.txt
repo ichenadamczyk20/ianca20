@@ -1,0 +1,13 @@
+#Team Kent Cockroaches (Ian Chen-adamczyk, William Yin, Arib Chowdhury)
+#SoftDev
+#K11 -- Some Things Never Change
+#2020-10-14
+
+Predicted behaviours:
+It will run a flask server on debug mode on the local host server on port 5000 where on the main page it says "No hablo queso!" in plain text
+There is a foo.html and a foo plaintext file in the static folder.
+Accessing the site http://localhost:5000/static/foo.html will open the html file.
+Accessing the site http://localhost:5000/static/foo will cause a download of the foo plain text file.
+2 lines will be printed in the terminal upon closing the flask server.
+
+Behaviour matched up with predictions.

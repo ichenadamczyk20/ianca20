@@ -1,0 +1,17 @@
+#Team Kent Cockroaches (Ian Chen-adamczyk, William Yin, Arib Chowdhury)
+#SoftDev
+#K12 -- ...or The Only Constant is Change?
+#2020-10-14
+
+#Q0: What happens if you remove render_template from this line?
+If you remove render_template from this line, the code will give you an error message for render_template not being defined but will still run the server anyways and allow you to go to the root page which has no errors.
+
+#Q1: Can all of your teammates confidently predict the URL to use to load this page?
+The url to load this page is http://localhost:5000/my_foist_template
+
+#Q2: What is the significance of each argument?
+The first argument is the name of the template file, the second argument is to choose the variable value for foo in the template (in this case the website title), and the third argument is another value for a variable.
+
+The code will run the server in debug mode and will have a templated page fit with the coll values at http://localhost:5000/my_foist_template as well as a page just saying "No hablo queso!" in plaintext at the root at http://localhost:5000.
+
+The behaviour went as predicted. When we removed the render_template import from app.py, the page at http://localhost:5000/my_foist_template had an error log as well as a debug menu where you could use the debugger pin given in the terminal to allow you to interact with a python shell in the browser.
