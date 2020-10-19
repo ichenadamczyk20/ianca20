@@ -1,0 +1,6 @@
+# Team Alpak-a (Alvin Wu, Pak Ming Lau, Adam Chen A.)
+# SoftDev
+# K13 -- Template for Success
+# 2020-10-15
+
+-You have to specify the path to a file if it's in a different folder and you want to open it

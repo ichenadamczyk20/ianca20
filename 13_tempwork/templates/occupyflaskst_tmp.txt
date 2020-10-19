@@ -1,0 +1,15 @@
+{# Team Alpak-a (Alvin Wu, Pak Ming Lau, Ian Chen-Adamczyk) SoftDev K13 -- Template for Success 2020-10-15 #}
+Team Alpak-A: Occupations
+Alvin Wu, Pak Ming Lau, Ian Chen A. 
+
+Random Occupation: {{ occupationRandom }}
+{% for key, value in occupationDict.items() %} {% endfor %}
+Occupation
+Helpful Link
+Percentage
+{{ key }}
+{{ linkdict[key] }}
+{{ value }}
+Total: 
+https://dol.ny.gov/
+{{ totals }}
