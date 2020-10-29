@@ -1,0 +1,22 @@
+MongoDB is a NoSQL (it doesn't store in related data tables) document database.
+Documents are a way to organize and store data as a set of field-value pairs ({<field> : <value>}).
+A collection is an organized store of documents in MongoDB, usually with common fields.
+
+Atlas is a database as a service, using MongoDB at its core.
+Clusters are a group of servers that store your data.
+An instance is a single machine running a certain software, locally or in the cloud.
+A replica set are a few connected MongoDB instances that store the same data. (If something bad happens to an instance,
+    other instances will have data as backups.)
+Services manage cluster creation, run and maintain database deployment, use the cloud service of your choice, and
+    allow you to experiment with different tools and features.
+
+Did the lab... deploying the new cluster took about five minutes. I had to click on the logical size graph
+    to see the logical size increase to ~350 MB as it should be, while in the thumbnail, it said the logical size was
+    around 200MB.
+
+We will interact with our clusters and data through the Data Explorer (from the Collections button) and
+    through the shell (from the Connect button).
+
+(Installing mongodb was a bit messy since I had to update xcode but I had to free up some disk space to do that...)
+Command to connect to a mongodb server:
+mongo "mongodb+srv://sandbox.u4lgh.mongodb.net/<dbname>" --username m001-student
