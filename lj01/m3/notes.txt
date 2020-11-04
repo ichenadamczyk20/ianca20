@@ -1,0 +1,35 @@
+Team ___ (Ian Chen-Adamczyk, Jessica Yeung, Mary Shang)
+SoftDev
+LJ01 -- Le Voyage de Learnination avec Mongo, Deuxième Phase (Chapters 3 and 4)
+2020-11-12
+
+Inserting new documents from the Atlas UI:
+  * Navigate to the collection
+  * Click the "Insert Document" button on the top right
+  * Enter data in JSON format and specify data types (use your mouse or the TAB key)
+      * Use the "Object" data type to nest documents
+
+Every document must have a unique "_id" value. "ObjectId()" is the default unique id. No other fields have special
+    requirements. You should follow good practices, however, so keep data organized and consistent. MongoDB has "schema
+    validation", in case you want to avoid inserting duplicate documents with different id's.
+
+Inserting new documents from the mongo shell:
+  * Use "mongoimport" with "--drop" to avoid a "duplicate key error" (another document with the same id already exists)
+  * Alternatively, use "db.collection.insert({field: value})". (You'll want to first connect to the Atlas cluster,
+    navigate to the database with "use db," and use "db.collection.findOne()" to see the format of the entries.)
+      * If you get a "WriteResult" with "WriteError" 11000, then you have a duplicate key error, and you have to change
+        the id, or not specify an "_id" value (so it automatically generates an ObjectId() value).
+      * If you get an "nInserted" of "1", then your document was added successfully.
+  * To insert multiple documents at once, use "db.collection.insert([{field: value}, {field: value}])" (inserting an
+    array of documents). If it works, there will be no "writeErrors" and an "nInserted" of the number of documents
+    you inputted.
+      * If, in the array, there are documents with duplicate ids with those in the array or already in the db, only the
+        documents in the array BEFORE the first occurrence of a duplicate id are inserted. That is, unless you use
+        "db.collection.insert([{field: value}, {field: value}], {"ordered": false})"
+  * Note that inserting a document into a collection that doesn't exist or in a database that doesn't exist will create
+    that collection or database.
+
+Updating documents form the Atlas UI:
+  * Hover over the document and select the edit button (the one that looks like a pencil)
+  * To add objects to arrays, hover over the line number to the left of the array field, and select "Add Array Element"
+  * Remember to select the write data type
