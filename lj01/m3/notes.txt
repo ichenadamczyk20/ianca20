@@ -27,9 +27,30 @@ Inserting new documents from the mongo shell:
         documents in the array BEFORE the first occurrence of a duplicate id are inserted. That is, unless you use
         "db.collection.insert([{field: value}, {field: value}], {"ordered": false})"
   * Note that inserting a document into a collection that doesn't exist or in a database that doesn't exist will create
-    that collection or database.
+    that collection or database. (Also, removing all collections in a database will delete that database.)
 
-Updating documents form the Atlas UI:
+Updating documents from the Atlas UI:
   * Hover over the document and select the edit button (the one that looks like a pencil)
   * To add objects to arrays, hover over the line number to the left of the array field, and select "Add Array Element"
   * Remember to select the write data type
+
+Updating documents from the mongo shell:
+  * "updateOne()", like "findOne()", will only affect the first document that satisfies the query.
+  * "updateMany()", like "find()", will affect all documents that satisfy the query.
+      * "db.zips.updateMany({"city": "HUDSON"}, {"$inc": {"pop": 10}})" adds 10 to the population of every field for
+        the city of Hudson. (The "$inc" MQL operator increments the population field, but can be used for multiple
+        fields at once.)
+      * "db.zips.updateMany({"city": "HUDSON"}, {"$set": {"pop": 17630}})" sets the population of the city of Hudson to
+        17630. (Like "$inc", it can be used for multiple fields, but it will also create fields if told to set fields
+        that don't yet exist.
+      * "db.grades.updateMany({"student_id": "250"}, {"$push": {"scores": {"type": "extra credit"}}})" will push
+        an array element.
+
+Deleting documents and collections from the Atlas UI:
+  * Hovering over databases, collections, and documents will show a garbage can icon for deleting things.
+
+Deleting documents and collections from the mongo shell:
+  * To delete documents, "deleteOne()" (like "updateOne()" and "findOne()") should be used if and only if you are using
+    id values. Otherwise, use "deleteMany()".
+  * To delete collections, use "db.collection.drop()"
+  * Deleted data is irrecoverable.
