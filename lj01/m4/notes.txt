@@ -1,0 +1,25 @@
+Query Comparison Operators
+  * MQL has update operators (e.g. $inc, $set, $unset) to modify data in the database.
+  * Query operators provide additional ways to located data within the database.
+      * These include: $eq, $neq, $gt, $lt, $gte, and $lte.
+          * Ex: {"tripduration": {"$lte": 70}} finds trips with trip durations less than 70.
+          * Ex: {"usertype": {"$ne": "Subscriber"}} finds users who aren't subscribers.
+          * These different filters can be chained in an object for "db.collection.find" or the Atlas UI.
+  * $ precedes MQL operators and aggregation pipeline states, and allows access to field values.
+
+Lab 1 Comparison Operators solution: db.zips.find({"pop": {"$lt": 1000}}).count() -> 8065
+Lab 2 Comparison Operators solution: db.trips.find({"birth year": {"$gt": 1998}}).count()
+                  - db.trips.find({"birth year": {"$eq": 1998}}).count() -> 6
+
+  * $and, $or, $nor, $not are the logic operators, and they behave as, expected from experience in other languages.
+  * $and, $or, and $nor need to be used in the form {<operator> : [{statement1},{statement2}, ...}, while $not can be
+    used in the form {<operator>: {statement}}.
+  * Implicit $and is used as the default operator when an operator is not specified. {field1: value1, field2: value2} is
+    the same as {$and: [{field1: value1}, {field2: value2}]}. Explicit $and should be used when you need to include
+    the same operator more than once in a query (e.g. {$and: {$or: [..., ...]}, {$or: [..., ...]}} ).
+
+Quiz 1 solution: db.inspections.find({result: "Out of Business", sector: "Home Improvement Contractor - 100"}).count()
+                    -> 4
+Lab 1 Logic Operators solution: db.zips.find({"pop": {"$lte": 1000000, "$gte": 5000}}).count() -> 11193
+Lab 2 Logic Operators solution: db.companies.find({"$and": [{"$or": [{"founded_year": 2004}, {"founded_month": 10}]},
+                    {"$or": [{"category_code": "social"}, {"category_code": "web"}]}]}).count() -> 149
