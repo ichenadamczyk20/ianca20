@@ -11,6 +11,7 @@ Lab 1 Comparison Operators solution: db.zips.find({"pop": {"$lt": 1000}}).count(
 Lab 2 Comparison Operators solution: db.trips.find({"birth year": {"$gt": 1998}}).count()
                   - db.trips.find({"birth year": {"$eq": 1998}}).count() -> 6
 
+Logic Operators
   * $and, $or, $nor, $not are the logic operators, and they behave as, expected from experience in other languages.
   * $and, $or, and $nor need to be used in the form {<operator> : [{statement1},{statement2}, ...}, while $not can be
     used in the form {<operator>: {statement}}.
@@ -24,6 +25,7 @@ Lab 1 Logic Operators solution: db.zips.find({"pop": {"$lte": 1000000, "$gte": 5
 Lab 2 Logic Operators solution: db.companies.find({"$and": [{"$or": [{"founded_year": 2004}, {"founded_month": 10}]},
                     {"$or": [{"category_code": "social"}, {"category_code": "web"}]}]}).count() -> 149
 
+$expr
   * $expr, the expressive query operator, allows the use variables, conditional statements, and aggregation expressions
     within the query language.
   * $expr can compare two different fields in the same document. The dollar sign before the field name indicates that
@@ -32,3 +34,16 @@ Lab 2 Logic Operators solution: db.companies.find({"$and": [{"$or": [{"founded_y
                                     { "$eq": ["$start station id", "$end station id"]} ]}
 
 Lab $expr solution: db.companies.find({"$expr": {"$eq": ["$permalink", "$twitter_username"]}}).count() -> 1299
+
+Array Operators
+  * $push allows us to add an element to an array, or turn a field into an array field from a previously different type.
+  * Searching {"amenities": ["Internet"]} only finds documents with field-value pair {"amenities": ["Internet"]}.
+  * Searching {"amenities": ["Internet", "Wifi", ...]} only finds documents with field "amenities" with that exact
+    value, size, and order.
+  * {"amenities": {"$size": 20, "$all": ["Internet", "Wifi"]} will find documents with a value for "amenities" that has
+    an exact size of 20 and contain at least "Internet" and "Wifi", in no particular order.
+
+Lab 1 Array Operators solution: db.listingsAndReviews.find({"reviews": {"$size": 50}, "accommodates": {"$gt": 6}})
+                        -> {name: "Sunset Beach Lodge Retreat"}
+Lab 2 Array Operators solution: db.listingsAndReviews.find({"amenities": {"$all": ["Changing table"]},
+                                                            "property_type": "House"}).count() -> 11
