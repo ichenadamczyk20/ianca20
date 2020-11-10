@@ -9,7 +9,7 @@ Query Comparison Operators
 
 Lab 1 Comparison Operators solution: db.zips.find({"pop": {"$lt": 1000}}).count() -> 8065
 Lab 2 Comparison Operators solution: db.trips.find({"birth year": {"$gt": 1998}}).count()
-                  - db.trips.find({"birth year": {"$eq": 1998}}).count() -> 6
+                                        - db.trips.find({"birth year": {"$eq": 1998}}).count() -> 6
 
 Logic Operators
   * $and, $or, $nor, $not are the logic operators, and they behave as, expected from experience in other languages.
@@ -23,7 +23,7 @@ Quiz 1 solution: db.inspections.find({result: "Out of Business", sector: "Home I
                     -> 4
 Lab 1 Logic Operators solution: db.zips.find({"pop": {"$lte": 1000000, "$gte": 5000}}).count() -> 11193
 Lab 2 Logic Operators solution: db.companies.find({"$and": [{"$or": [{"founded_year": 2004}, {"founded_month": 10}]},
-                    {"$or": [{"category_code": "social"}, {"category_code": "web"}]}]}).count() -> 149
+                            {"$or": [{"category_code": "social"}, {"category_code": "web"}]}]}).count() -> 149
 
 $expr
   * $expr, the expressive query operator, allows the use variables, conditional statements, and aggregation expressions
@@ -44,6 +44,22 @@ Array Operators
     an exact size of 20 and contain at least "Internet" and "Wifi", in no particular order.
 
 Lab 1 Array Operators solution: db.listingsAndReviews.find({"reviews": {"$size": 50}, "accommodates": {"$gt": 6}})
-                        -> {name: "Sunset Beach Lodge Retreat"}
+                                    -> {name: "Sunset Beach Lodge Retreat"}
 Lab 2 Array Operators solution: db.listingsAndReviews.find({"amenities": {"$all": ["Changing table"]},
                                                             "property_type": "House"}).count() -> 11
+
+Projections
+  * Projections include certain results in the query result, indicated by a 1 or a 0. They are of format
+    db.collection.find({ <query> }, { <projection> })
+      * Ex: db.listingsAndReviews.find({"price": 1, "address": 1}).pretty() show only "_id", "price", and "address".
+  * You can use only 1s or only 0s in a single query. (The exception is that you can always use "_id": 0)
+      * Ex: db.listingsAndReviews.find({"price": 1, "address": 1, "_id": 0}).pretty() shows only "price" and "address".
+  * The "$elemmatch" operator allows us to query for documents that contain an array field with at least one element
+    that matches the specified query criteria, or project only the array elements with at least one element that matches
+    the specified criteria.
+      * Ex: db.grades.find({"class_id": 431}, {"scores": {"$elemMatch": {"score": {"$gt": 85} } } }).pretty()
+              -> finds students with class_id 431, showing the _id and, if the score is greater than 85, the score.
+      * Ex: db.grades.find({"scores": {"$elemMatch": {"type": "extra credit" } } }).pretty()
+              -> finds students who had an extra credit grade.
+Lab Array Operators and Projection solution: db.companies.find({"offices": {"$elemMatch": {"city": "Seattle"}}}).count()
+                                                -> 117
