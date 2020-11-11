@@ -1,7 +1,7 @@
-Team MaJessIan (Ian Chen-Adamczyk, Jessica Yeung, Mary Shang)
+Team AlPak-A (Alvin Wu, Pak Ming Lau, Ian Chen-Adamczyk)
 SoftDev
-LJ00 -- Le Voyage de Learnination avec Mongo (Chapters 1 and 2)
-2020-11-12
+LJ00 -- Le Voyage de Learnination avec Mongo, Première Phase (Chapters 1 and 2)
+2020-10-29
 
   * MongoDB is a NoSQL (it doesn't store in related data tables) document database.
   * Documents are a way to organize and store data as a set of field-value pairs ({<field> : <value>}).

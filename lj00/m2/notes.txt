@@ -1,7 +1,7 @@
-Team MaJessIan (Ian Chen-Adamczyk, Jessica Yeung, Mary Shang)
+Team AlPak-A (Alvin Wu, Pak Ming Lau, Ian Chen-Adamczyk)
 SoftDev
-LJ00 -- Le Voyage de Learnination avec Mongo (Chapters 1 and 2)
-2020-11-12
+LJ00 -- Le Voyage de Learnination avec Mongo, Première Phase (Chapters 1 and 2)
+2020-10-29
 
 Documents in the Mongo shell are in JSON format.
   * Start and end with curly braces
