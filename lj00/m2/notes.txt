@@ -1,29 +1,35 @@
+Team MaJessIan (Ian Chen-Adamczyk, Jessica Yeung, Mary Shang)
+SoftDev
+LJ00 -- Le Voyage de Learnination avec Mongo (Chapters 1 and 2)
+2020-11-12
+
 Documents in the Mongo shell are in JSON format.
   * Start and end with curly braces
   * Separate each key and value with a colon
   * Separate each key:value pair with a comma
   * keys must be surrounded by quotation marks
   * Sub-documents are in similar format.
-JSON is friendly, readable, and human-readable, but it is text-based (and therefore slow), space-consuming, and limited.
-However, Mongo uses BSON in memory, bridging the gap between binary representation and JSON format for speed, space,
+  * JSON is friendly, readable, and human-readable, but it is text-based (and therefore slow), space-consuming, and
+    limited.
+  * However, Mongo uses BSON in memory, bridging the gap between binary representation and JSON format for speed, space,
     flexibility, and support for arrays, dates, and other data types. When you interact with MongoDB, it is still
     practically a JSON database.
 
-URI string is a uniform resource identifier, used with srv to establish a more secure connection.
+  * URI string is a uniform resource identifier, used with srv to establish a more secure connection.
 
 To export to a local machine or a different system, one can use stored BSON or viewed JSON.
-    For stored BSON: (dump is the name of the output) (--drop removes the existing database to avoid conflicts)
+  * For stored BSON: (dump is the name of the output) (--drop removes the existing database to avoid conflicts)
         mongodump --uri "<Atlas Cluster URI>"
         mongorestore --uri "<Atlas Cluster URI>" --drop dump
-    For viewed JSON:
+  * For viewed JSON:
         mongoexport --uri "<Atlas Cluster URI>" --collection=sales --out=sales.json
         mongoimport --uri "<Atlas Cluster URI>" --collection=sales --drop sales.json
 
-Navigate to Data Explore on Atlas UI using the Collections button. You'll see databases and collections, which can be
+Viewing Data
+  * Navigate to Data Explore on Atlas UI using the Collections button. You'll see databases and collections, which can be
     searched using the "namespace" (db name + connection name) search bar. "Find" shows each document and can be
     queried using format {"field1": "value1", "field2": "value2", ...}
-
-Alternatively, you can use the "find" command from the shell. (The admin database holds administrative information.)
+  * Alternatively, you can use the "find" command from the shell. (The admin database holds administrative information.)
   * "show dbs" shows the list of databases in the cluster.
   * "use <db-name>" switches to a specific database
   * "show collections" lists the collections

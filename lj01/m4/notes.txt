@@ -1,3 +1,8 @@
+Team MaJessIan (Ian Chen-Adamczyk, Jessica Yeung, Mary Shang)
+SoftDev
+LJ01 -- Le Voyage de Learnination avec Mongo, Deuxième Phase (Chapters 3 and 4)
+2020-11-12
+
 Query Comparison Operators
   * MQL has update operators (e.g. $inc, $set, $unset) to modify data in the database.
   * Query operators provide additional ways to located data within the database.
@@ -30,8 +35,8 @@ $expr
     within the query language.
   * $expr can compare two different fields in the same document. The dollar sign before the field name indicates that
     we are analyzing the value and not the field value across documents.
-          Ex: {"$expr" : {"$and": [ { "$gt": ["$tripduration", 1200] },
-                                    { "$eq": ["$start station id", "$end station id"]} ]}
+      * Ex: {"$expr" : {"$and": [ { "$gt": ["$tripduration", 1200] },
+                                  { "$eq": ["$start station id", "$end station id"]} ]}
 
 Lab $expr solution: db.companies.find({"$expr": {"$eq": ["$permalink", "$twitter_username"]}}).count() -> 1299
 
@@ -61,5 +66,26 @@ Projections
               -> finds students with class_id 431, showing the _id and, if the score is greater than 85, the score.
       * Ex: db.grades.find({"scores": {"$elemMatch": {"type": "extra credit" } } }).pretty()
               -> finds students who had an extra credit grade.
+
 Lab Array Operators and Projection solution: db.companies.find({"offices": {"$elemMatch": {"city": "Seattle"}}}).count()
                                                 -> 117
+
+Array Operators and Sub-Documents
+  * To query a sub-document, use dot notation.
+      * Ex: db.trips.findOne({"start station location.type": "Point"}) -> queries field "type" in sub-document
+        "start station location"
+  * Dot notation can also be chained.
+  * ".0" finds the first array element.
+      * Ex: db.companies.find({"relationships.0.person.last_name": "Zuckerberg"}) -> finds the company with the first
+        element in the relationships array having a person with last name "Zuckerberg".
+      * Ex: db.companies.find({"relationships.0.title": {"$regex": "CEO"}}) -> uses the $regex operator to find
+        companies with a value containing "CEO" for the "title" field in the first element of the "relationships" Array
+        element.
+      * Ex: db.companies.find({ "relationships":
+                                { "$elemMatch": { "is_past": true, "person.first_name": "Mark" } } }) -> finds
+        number of companies with an executive named "Mark" who is no longer at that company.
+
+Lab 1 Querying Arrays and Sub-Documents solution: db.trips.find({"start station location.coordinates.0":
+                                                                    {"$lt": -74}}).count() -> 1928
+Lab 2 Querying Arrays and Sub-Documents solution: db.inspections.find({"address.city": {"$eq": "NEW YORK"}}).count()
+                                                                                            -> 18279
