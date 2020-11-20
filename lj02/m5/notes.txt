@@ -3,3 +3,27 @@ SoftDev
 LJ02: Le Voyage de Learnination avec Mongo, Troisième Phase (Chapters 5 and 6)
 2020-11-25
 
+The MongoDB Aggregation Framework
+  * In its simplest form, it is another way to query data in MongoDB, with a superset of the options provided by the
+    MongoDB query language (MQL).
+  * db.listingsAndReviews.find({ "amenities": "Wifi" }, { "price": 1, "address": 1, "_id": 0 }).pretty() finds all
+    documents that have Wifi as one of the amenities and only includes price and address in the resulting cursor, using
+    the query language.
+  * db.listingsAndReviews.aggregate( [ { "$match": { "amenities": "Wifi" } },
+                                       { "$project": {"price": 1, "address": 1, "_id": 0}} ] ).pretty()
+    is the aggregation version.
+  * Aggregation pipes the data through each of the stages/actions in the order given in the list. Data is entered, and
+    the transformed data comes out of the pipeline.
+  * Aggregation can be used to create much more complicated pipelines than would be possible with the MQL. (Conway's
+    game of life and fractals have been created using the Aggregation Framework.) While MQL filters and updates data,
+    the Aggregation Framework can compute and reshape data.
+
+  * Non-filtering stages (not modifying the data, but working with the data in the cursor)
+      * The $group operator organizes the incoming data into multiple distinct reservoirs.
+         * Ex: { $group : {
+                            _id: "$address.country", // Group by expression
+                            "count": {"$sum": 1} // Adds one for each document in the group
+         }
+
+Aggregation Framework Lab solution: db.listingsAndReviews.aggregate( [ { $group : { _id: "$room_type" } } ] )
+                                 -> { "_id" : "Shared room" }\n{ "_id" : "Private room" }\n{ "_id" : "Entire home/apt" }
