@@ -1,0 +1,5 @@
+Team MaJessIan (Ian Chen-Adamczyk, Jessica Yeung, Mary Shang)
+SoftDev
+LJ02: Le Voyage de Learnination avec Mongo, Troisième Phase (Chapters 5 and 6)
+2020-11-25
+
