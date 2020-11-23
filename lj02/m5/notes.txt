@@ -27,3 +27,50 @@ The MongoDB Aggregation Framework
 
 Aggregation Framework Lab solution: db.listingsAndReviews.aggregate( [ { $group : { _id: "$room_type" } } ] )
                                  -> { "_id" : "Shared room" }\n{ "_id" : "Private room" }\n{ "_id" : "Entire home/apt" }
+
+sort() and limit()
+  * sort() and limit() are cursor operators, in that they operate only on the data from the cursor, and not the
+    collection.
+  * db.zips.find().sort({"pop": 1}).limit(1).pretty() finds all the documents in the zips collection, sorts it by "pop"
+    in increasing order, selects only the first result (least populated), and prettifies the output. {"pop": 0} does not
+    sort, and {"pop": -1} sorts in decreasing order. You can sort by multiple fields, with something like
+    {"pop": 1, "city": -1}
+  * Note that cursor.limit().sort() is interpreted as cursor.sort().limit() (because the first one is more useless).
+
+sort() and limit() Quiz 2 solution: db.trips.find({"birth year": {$ne: ""}}, {"birth year": 1}).limit(1)
+                                            .sort({"birth year": -1}) -> 1999
+
+Indexes
+  * Indexing makes queries more efficient and is one of the most important tools for improving performance.
+  * Think of indexing like the organized index of occurrences of certain words at the back of a book.
+  * In a database, an index is a special data structure that stores a small portion of the collection's data set in an
+    easy to traverse format.
+  * Avoid sorting without indexing to improve performance.
+  * To create an index, use command db.collection.createIndex({"field": 1}) (or ... .createIndex({"field": -1})).
+  * db.trips.createIndex({"birth year": 1}) improves performance on db.trips.find({"birth year": 1989}) and the sorting
+    step of db.trips.find({"start station id": 476}).sort({"birth year": 1}).
+  * The second command can have improved performance by using a compound index, specifically using the command
+    db.trips.createIndex({ "start station id": 476, "birth year": 1 }).
+
+Data modeling
+  * A way to organize fields in a document to support your application performance and querying capabilities.
+  * Data is stored in the way that it is used.
+  * Your main considerations should be what data you will store and how that data will be queried (who will be using the
+    data and what do they need from it?).
+  * Any data that is regularly used together should be stored together in the same document.
+  * An evolving application implies an evolving data model.
+
+Upsert
+  * Everything in MQL that is used to locate a document in a collection can also be used to modify this document.
+      * Ex: db.collection.updateOne({<query to locate}, {<update>})
+  * Upsert is a hybrid of update and insert. It should only be used when it is needed.
+      * Ex: db.collection.updateOne({<query to locate}, {<update>}, {"upsert": true})
+      * If upsert is true, it will updated the matched document if there is a match, or otherwise insert a new document.
+      * Upsert is useful for situations like an IoT situation, where a smart home has documents for different sensors
+        and their sensor readings. When a sensor takes a new reading, it updates the document selected by sensor id,
+        date, and the number of readings taken. It will update the readings, the number of readings taken, and the
+        total. With upsert, a new document will be created if there are too many readings taken in the sensor's current
+        document, but the document will be updated normally if there's still room for more readings.
+  * Consider: is {<update>} enough to create a new document? Will the document have the same or similar form to
+    other documents in the collection?
+  * If you are not using upsert, choose either .updateOne() or .insert()
