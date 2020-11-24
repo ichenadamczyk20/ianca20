@@ -2,3 +2,43 @@ Team MaJessIan (Ian Chen-Adamczyk, Jessica Yeung, Mary Shang)
 SoftDev
 LJ02: Le Voyage de Learnination avec Mongo, Troisième Phase (Chapters 5 and 6)
 2020-11-25
+
+Atlas Features
+  * The data explorer has the "Indexes" tab, which lists the indexes of the collection, allowing you to delete indexes
+    and view performance advice.
+  * The "Schema Anti-Pattern" tab provides you with sound advice about your data model after enough queries have been
+    used.
+  * The "Aggregation" tab allows you to build aggregation pipelines and see how the data is transformed through each
+    stage.
+      * The query is entered in the left side of the UI, and the results are displayed on the right side. Each stage
+        will have its own box that can be dragged around to reorder each stage.
+      * For each stage, you select the operator and will be given a bit of documentation for the syntax.
+      * When you are done, you can export the pipeline into code in your language of choice, to use in your application.
+  * The "Search Indexes" tab is a more sophisticated indexing system (Atlas Search) that allows you to use advanced
+    search functionality.
+
+Atlas Products and Options
+  * When you first started using atlas, you needed to create an organization, which allows you to manage billing across
+    groups and teams. (If you are using a free cluster, you don't have to worry about billing.)
+  * Within an organization, you have projects. Users are assigned to projects, a step made easier by grouping users into
+    teams. All users in an organization can view all the projects of that organization.
+  * Each project can have different clusters within it, as long as each of the cluster has a unique name.
+  * Realm allows developers to build web or mobile applications using MongoDB without worrying about scaling servers
+    but still being able to track the databases at a low level.
+  * Charts allows you to create dynamic data visualizations and use them wherever you like.
+      * Start by creating a dashboard, which can have many charts in it.
+      * You can configure Charts to apply an aggregation pipeline to the data first, or to only visualize a sample.
+      * Select a chart type and select the fields for each parameter to generate the chart.
+      * You can view the aggregation pipeline that was used to create the chart.
+
+MongoDB Compass (MongoDB's GUI Project)
+  * A UI to connect to MongoDB databases.
+  * You start by connecting to a cluster, either by entering a connection link or by filling out individual fields.
+  * You then see all of the databases, including admin, config, and local, automatically created databases that you
+    should never touch unless told to by support. You can also see the size and the number of indexes of the databases
+    and a list of their collections with the number of documents, indexes, and their sizes.
+  * You can view the data in normal field:value view, JSON view, or table view, making it easier to explore documents
+    and sub-documents.
+  * You can also enter a query (with options for projections and sorting), or create aggregation pipelines, like in
+    the Atlas UI.
+  * Creating indexes (indexes tab) and query performances (Explain Plan tab) is also pretty simple in MongoDB Compass.
