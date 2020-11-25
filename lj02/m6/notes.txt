@@ -42,3 +42,12 @@ MongoDB Compass (MongoDB's GUI Project)
   * You can also enter a query (with options for projections and sorting), or create aggregation pipelines, like in
     the Atlas UI.
   * Creating indexes (indexes tab) and query performances (Explain Plan tab) is also pretty simple in MongoDB Compass.
+      * After creating an index and running a query, you will get a visual tree and raw JSON about the performance
+        of the query.
+      * The difference of documents examined and the documents returned should be as low as possible to indicate
+        optimal performance. If the difference is high, you may need a different index.
+  * From the Validation tab, you can configure MongoDB to filter the data that is entered into the database and only
+    accept valid data according to your rules.
+  * The Schema tab will try to visualize your data in the most helpful way. If you have coordinates stored in a field,
+    the Schema tab will recognize this and display that field on a map automatically.
+
