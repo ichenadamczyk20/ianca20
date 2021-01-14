@@ -1,0 +1,19 @@
+ - We used "display: flex" on the body element to change the order that the elements are displayed. We want the
+   main foo heading and the nav heading to appear next to each other, but since they are not next to each other
+   in the HTML, we used "order: n" to change the order they were displayed, with lower values of n pushing
+   the element to the left, and higher values of n pushing the element to the right.
+
+ - While there is a :first-line selector for CSS, there is no :last-line selector for CSS. From our research
+   on stackoverflow, it seems the only way to modify the last line of a paragraph element is to use
+   "text-align-last".
+
+ - In order to add a styled copyright text, the last br is given a pseudo-element, ::after. It is positioned
+   vertically by using the parent br's height (since the br is in the content flow) and horizontally by using
+   "position: absolute" with respect to the body element. It has a positive z-index, so it covers the already
+   existing "Copyright" text. This is impossible to replicate with inline css however, since pseudo-elements
+   cannot be selected inline. We agreed that it is impossible to achieve any such affect with only inline CSS,
+   since not being able to select pseudo-elements, and options like "text-align-last" being insufficient, there
+   is no way to change only the last line of the paragraph element, unless the last line is given its own HTML
+   element with its own inline CSS. Therefore, we added spins to contain the copyright text as it is in the HTML.
+
+ - Lorem ipsum generator used: https://pirateipsum.me/#scrollstop
