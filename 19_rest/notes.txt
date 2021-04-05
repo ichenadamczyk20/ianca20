@@ -1,0 +1,7 @@
+Team COIS (Stella Oh + Ian Chen-Adamczyk)
+SoftDev
+K19 -- A RESTful Journey Skyward
+2021-04-05
+
+ - We were getting a strange 403 error but it fixed itself for some reason.
+ - Website took pretty long to load
