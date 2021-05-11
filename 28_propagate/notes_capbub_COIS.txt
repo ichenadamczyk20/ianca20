@@ -1,0 +1,24 @@
+version 1:
+prediction: returns each element in the table one at a time 
+behavior: returns only the item clicked on
+
+version 2:
+prediction: returns the name inside the item clicked, then the html for the <td> elements in the row of the item clicked, then the html for the <table> containing the item clicked
+behavior: returned the cell item name, the html for the row, and the html for the <table> as above. however, the html for the <table> contains a <tbody>
+
+version 3:
+prediction: the cell item is returned, then the <td> row that item is in is returned , and finaally the html for the table
+behavior: the table in html is returned, then cell item, then the row in html
+
+prediction with e.stopPropagation(): only the table's html is returned
+behavior: only the table's html is returned
+
+version 4: 
+prediction: the table in html is returned, then the row's html, then the cell item
+behavior: the table in html is returned, then the row's html, then the cell item
+
+prediction with e.stopPropagation(): only the table's html is returned
+behavior: only the table's html is returned
+
+q/c/c/anything useful/anything worth remembering
+watch out! Opera, and probably Chrome, inserts a <tbody> element into your <table> element
