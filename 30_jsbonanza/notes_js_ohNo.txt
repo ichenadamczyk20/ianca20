@@ -1,0 +1,14 @@
+Team ohNo (Anya Zorin, Ian Chen-Adamczyk, Jessica Yeung)
+SoftDev pd 1
+K30 -- JSorcery
+2021-05-16
+
+There are two different animations. One is a ball simulator where different types of game-related balls are bounced around (with 8-Balls having the added effect of changing the canvas background color). The second animation is of a tennis ball bouncing around the canvas. When it hits a wall of the canvas (left, right, top, or bottom), its width or height changes depending on which wall it hit. The tennis ball speeds up as it hits each wall until it reaches a certain higher speed, to which it then begins to slow down until it once again reaches a certain lower speed, and the process repeats. A line is continuously drawn from the ball's center to the last wall it hit.
+
+Having the "x, y" values for an image refer to the top left pixel of an image is super annoying (rather than the center). :D 
+
+Some images on Google with the checker background aren't actually transparent.
+
+JavaScript Objects (with attributes, methods, and inheritance like other object-oriented languages) are defined by defining a function and using "this.varName/this.funcName" inside it to define attributes and methods. To inherit the attributes and methods of another Object, you just put "ObjectName.call(this, parameters)" at the beginning of the Object definition you are making.
+
+Matrices were used to approximate bouncing between balls, though it doesn't really account for different masses or velocities. It does however preserve the magnitude of velocity for each individual ball, so it does preserve the overall kinetic energy of the system. The matrix from https://math.stackexchange.com/questions/525082/reflection-across-a-line was used to reflect the velocity off of the tangent line at the point of contact, just as how the velocity would be reflected off of the edge of the canvas that it is tangent to when it hits the edge.
